@@ -18,7 +18,7 @@ If you did it the manaul way, make sure the version it right for your app. Check
 14. Verify you see as follows when navigating to `http://127.0.0.1:8000/`.
 <img width="883" alt="hello world precursor to kubernetes deployment" src="https://user-images.githubusercontent.com/7783699/112783915-64d48500-901e-11eb-958e-3f62d0370f9b.png">
 
-## Wrap in Docker Container
+## Wrap Project in Docker Container
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
 2. Next open your code editor (Atom, VSCode, etc.) and open new workspace for that project folder (ex. "demo-django-hello-world-starter").
 3. Create a new file called `Dockerfile`.
@@ -26,6 +26,6 @@ If you did it the manaul way, make sure the version it right for your app. Check
 
 
 
-## Deploy Container to Kubernetes
+## Deploy Container to Kubernetes (Purely command-line)
 
 
