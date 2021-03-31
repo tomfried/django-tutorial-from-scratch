@@ -1,6 +1,6 @@
 ## Setup Django Project
 **Example is for `MAC` devices. Use `apt-get` or `yum` in place of `brew` commands for the equivalent on `Linux`.**
-1. Install Homebrew (used in place of `apt-get` and `yum` to install packages.
+1. Install Homebrew (used in place of `apt-get` and `yum` to install packages).
 ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
 2. Install python3: `brew install python3`. Ensure above `3.7` by doing a `python --version`.
 3. Install git: `brew install git`.
