@@ -64,7 +64,7 @@ STATICFILES_DIRS = [
 ```
 5. Reload server and verify the home page despite being in a new directory still loads as if nothing has happened.
 
-### Change all Mention of "Hello World" to "Home" and make Comntro
+### Change all Mention of "Hello World" to "Home" and make Controllers directory where all the backend code will live
 1. Change `/app/views/hello_world` folder to `/app/views/home`.
 2. Change `/app/hello_world` folder to `/app/controllers`.
 3. Change `/app/settings.py` reference in the `INSTALLED_APPS = [` section of `'hello_world',` to `'controllers',`.
