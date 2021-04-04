@@ -41,8 +41,8 @@ IF you run into issues, install these: `sudo apt-get install python-dev python3-
 ### Move static files to parent directory for all and rename "assets".
 1. Move current `/static/` from within your `hello_world` directory up one level so all apps can access it.
 2. Rename it `assets` and create 3 new folder underneath it: "css", "js", and "images".
-3. If using the example git clone from earlier, move the brownies image under images.
-4. Go to the `settings.py` under `app/app/settings.py` and at the very bottom where it says `STATIC_URL = '/static/'`, replace that with the following:
+3. If using the example git project from earlier, move the brownies image under images.
+4. Go to the `settings.py` under `/app/app/settings.py` and at the very bottom where it says `STATIC_URL = '/static/'`, replace that with the following:
 ```
 STATIC_URL = 'assets/'
 
@@ -50,11 +50,19 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "assets")
 ]
 ```
-5. If using the example git clone from earlier, go to where the brownies image is references under app/hello_world/templates/index.html and replace the source of the image from `src="{% static 'coconut_bars.jpg' %}"` to `src="{% static 'images/coconut_bars.jpg' %}"`. Then that's it. Going forward all assets will exist in this one `assets` folder and just need to reference `css/`, `js/`, or `image/` when adding it.
+5. If using the example git project from earlier, go to where the brownies image is references under app/hello_world/templates/index.html and replace the source of the image from `src="{% static 'coconut_bars.jpg' %}"` to `src="{% static 'images/coconut_bars.jpg' %}"`. Then that's it. Going forward all assets will exist in this one `assets` folder and just need to reference `css/`, `js/`, or `image/` when adding it.
 
-### Move all partial views to own folder
-1. 
-
+### Move all views (HTML files) to own folder in parent directory
+1. If using the example git project from earlier, move the `app/hello_world/template`folder up a directory and then change the name of it to `views` so it is now shown as `app/views`. Reason for the name change is to more accurately represent the Model-View-Controller aspects of the app for newbies to more easily understand.
+2. In the folder where the `index.html` file was, create a new folder called `hello_world` and then put the `index.html` file inside of it.
+3. Now change reference of the `index.html` in the `/app/hello_world/views.py` file. Change `return render(request, 'index.html')` to `return render(request, 'hello_world/index.html')`.
+4. Lastly to make the project knows to add this directory of views (templates) to it, go to `/app/app/settings.py` and under `TEMPLATES = [` section, where it says `'DIRS': [` replace with the following:
+```
+'DIRS': [
+    os.path.join(BASE_DIR, 'views'),
+],
+```
+5. Reload server and verify the home page despite being in a new directory still loads as if nothing has happened.
 
 
 ## Wrap Project in Docker Container
