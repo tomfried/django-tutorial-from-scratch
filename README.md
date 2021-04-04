@@ -41,7 +41,7 @@ IF you run into issues, install these: `sudo apt-get install python-dev python3-
 ### Move static files to parent directory for all and rename "assets".
 1. Move current `/static/` from within your `hello_world` directory up one level so all apps can access it.
 2. Rename it `assets` and create 3 new folder underneath it: "css", "js", and "images".
-3. If using the example git project from earlier, move the brownies image under images.
+3. If using the example git project from earlier, move the coconut bars image under images.
 4. Go to the `settings.py` under `/app/app/settings.py` and at the very bottom where it says `STATIC_URL = '/static/'`, replace that with the following:
 ```
 STATIC_URL = 'assets/'
@@ -50,7 +50,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "assets")
 ]
 ```
-5. If using the example git project from earlier, go to where the brownies image is references under app/hello_world/templates/index.html and replace the source of the image from `src="{% static 'coconut_bars.jpg' %}"` to `src="{% static 'images/coconut_bars.jpg' %}"`. Then that's it. Going forward all assets will exist in this one `assets` folder and just need to reference `css/`, `js/`, or `image/` when adding it.
+5. If using the example git project from earlier, go to where the coconut bars image is references under app/hello_world/templates/index.html and replace the source of the image from `src="{% static 'coconut_bars.jpg' %}"` to `src="{% static 'images/coconut_bars.jpg' %}"`. Then that's it. Going forward all assets will exist in this one `assets` folder and just need to reference `css/`, `js/`, or `image/` when adding it.
+<img width="637" alt="hello world after moving assets out" src="https://user-images.githubusercontent.com/7783699/113500108-74a20c80-94e9-11eb-8509-f82a39c17380.png">
 
 ### Move all views (HTML files) to own folder in parent directory
 1. If using the example git project from earlier, move the `app/hello_world/template`folder up a directory and then change the name of it to `views` so it is now shown as `app/views`. Reason for the name change is to more accurately represent the Model-View-Controller aspects of the app for newbies to more easily understand.
