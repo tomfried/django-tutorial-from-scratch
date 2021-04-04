@@ -64,6 +64,28 @@ STATICFILES_DIRS = [
 ```
 5. Reload server and verify the home page despite being in a new directory still loads as if nothing has happened.
 
+### Change all Mention of "Hello World" to "Home" and make Comntro
+1. Change `/app/views/hello_world` folder to `/app/views/home`.
+2. Change `/app/hello_world` folder to `/app/controllers`.
+3. Change `/app/settings.py` reference in the `INSTALLED_APPS = [` section of `'hello_world',` to `'controllers',`.
+4. Change `/app/urls.py` reference in the `INSTALLED_APPS = [` section of `from hello_world import views` to `from controllers import views`.
+5. Change the now `/app/controllers/apps.py` mention of: `return render(request, 'home/index.html')` to `return render(request, 'home/index.html')`
+6. Change the now `/app/controllers/apps.py` mention of:
+```
+class HelloWorldConfig(AppConfig):
+    name = 'hello_world'
+```
+to
+```
+class ControllersConfig(AppConfig):
+    name = 'controllers'
+```
+7. Create new folder under the now `/app/controllers` called `home` and place the `views.py` in it.
+8. Then create a new file in this `home` folder titled `__init__.py`.
+9. Edit the `__init__.py` file and add the following to it: `from .views import *`. Verify this is the only thing in this file.
+10. Lastly just need to go to `/app/app/urls.py` file and change the `path('', views.index)` line to `path('', home.index)`.
+11. Verify restarting the server still makes the same hello world message and graphic appear correctly. If so, your file structure should look like this:
+<img width="423" alt="file structure after customization" src="https://user-images.githubusercontent.com/7783699/113499996-98188780-94e8-11eb-9172-f86ce11eef8b.png">
 
 ## Wrap Project in Docker Container
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
@@ -74,5 +96,5 @@ STATICFILES_DIRS = [
 
 
 ## Deploy Container to Kubernetes (Purely command-line)
-
+1.
 
