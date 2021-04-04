@@ -37,6 +37,26 @@ If you did it the manaul way, make sure the version it right for your app. Check
 
 IF you run into issues, install these: `sudo apt-get install python-dev python3-dev`, `sudo apt-get install libmysqlclient-dev`, `pip install pymysql`, then `pip install mysqlclient` again. NOTE to use yum instead of apt-get if you use yum. As per MAC users, instead have to install XCode, `sudo xcodebuild -license accept`, then `brew install mysql-connector-c`.
 
+## Make Tweaks to File Structure
+### Move static files to parent directory for all and rename "assets".
+1. Move current `/static/` from within your `hello_world` directory up one level so all apps can access it.
+2. Rename it `assets` and create 3 new folder underneath it: "css", "js", and "images".
+3. If using the example git clone from earlier, move the brownies image under images.
+4. Go to the `settings.py` under `app/app/settings.py` and at the very bottom where it says `STATIC_URL = '/static/'`, replace that with the following:
+```
+STATIC_URL = 'assets/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "assets")
+]
+```
+5. If using the example git clone from earlier, go to where the brownies image is references under app/hello_world/templates/index.html and replace the source of the image from `src="{% static 'coconut_bars.jpg' %}"` to `src="{% static 'images/coconut_bars.jpg' %}"`. Then that's it. Going forward all assets will exist in this one `assets` folder and just need to reference `css/`, `js/`, or `image/` when adding it.
+
+### Move all partial views to own folder
+1. 
+
+
+
 ## Wrap Project in Docker Container
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
 2. Next open your code editor (Atom, VSCode, etc.) and open new workspace for that project folder (ex. "demo-django-hello-world-starter").
