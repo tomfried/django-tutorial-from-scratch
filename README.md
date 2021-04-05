@@ -88,6 +88,94 @@ class ControllersConfig(AppConfig):
 11. Verify restarting the server still makes the same hello world message and graphic appear correctly. If so, your file structure should look like this:
 <img width="423" alt="file structure after customization" src="https://user-images.githubusercontent.com/7783699/113499996-98188780-94e8-11eb-9172-f86ce11eef8b.png">
 
+### Create layout and add Header, Footer, and HTML Head as Partials/Templates
+1. In the `/app/views` folder, create a new one titled `layout`.
+2. Create a new file in there titled `base.html`.
+3. Paste the following it it:
+```
+<!DOCTYPE html>
+<html lang="en">
+    {% include "layout/html_head.html" %}
+    <body>
+        <header>{% include "layout/header.html" %}</header>
+        <main>{% block content %}{% endblock %}</main>
+        <footer>{% include "layout/footer.html" %}</footer>
+    </body>
+<html>
+```
+4. In the same directory (`/app/views/layout`) create a new file titled `html_head.html` and put the just the following in it for now:
+```
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>My Django App</title>
+</head>
+```
+5. Create the file `header.html` in the same location and just paste the following it for now:
+```
+{% load static %}
+<div class="content-container">
+    <a href="/">
+        <img class="logo" src="{% static 'images/logo.png' %}" alt="home">
+    </a>
+</div>
+```
+6. Create the file `footer.html` in the same location and just paste the following it for now:
+```
+<div class="content-container">Footer works too!</div>
+```
+7. Download this royalty free image below (courtesy of [postermywall])(https://www.postermywall.com/index.php/art/template/2402e0689677112e3b2b6e0f399d7dc3/corporate-company-logo-design-template#.YGpe6EhKgmJ) and place it in the `/app/assets/images/` directory.
+
+![logo](https://user-images.githubusercontent.com/7783699/113526407-f5afe100-9587-11eb-9b48-93b6b0dc42df.png)
+
+
+8. Create a new file in the `/app/assets/css/` directory called `styles.css`. NOTE, instructions will be added below eventually on doing everything in SCSS instead of CSS but for now just copy/paste the following into it:
+```
+body {
+    margin: 0;
+}
+header,
+footer {
+    background: #ddd;
+}
+header {
+    border-bottom: 1px solid #ccc;
+}
+main {
+    min-height: calc(100vh - 162px);
+}
+img.logo {
+    max-width: 140px;
+}
+.content-container {
+    margin: 0 1.5em 0 2em;
+    max-width: 100%;
+}
+footer {
+    border-top: 1px solid #ccc;
+}
+footer > div {
+    padding: .7em 0;
+}
+```
+9. Edit the `/app/views/home/index.html` file and make it just following to work with the new layout:
+```
+{% extends "../layout/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div id="homePage" class="content-container">
+		<h1>Some delicious coconut bars</h1>
+		<img src="{% static 'images/coconut_bars.jpg' %}" alt="Delicious chocolate coconut bars" />
+	</div>
+{% endblock %}
+```
+10. Run server again and verify you see as shown below:
+<img width="1583" alt="hello world after adding templates" src="https://user-images.githubusercontent.com/7783699/113534564-16376580-959f-11eb-8552-ba92e47465fd.png">
+
 ## Wrap Project in Docker Container
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
 2. Next open your code editor (Atom, VSCode, etc.) and open new workspace for that project folder (ex. "demo-django-hello-world-starter").
