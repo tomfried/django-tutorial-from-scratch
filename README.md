@@ -17,6 +17,9 @@ If you did it the manaul way, make sure the version it right for your app. Check
 13. Test running the server to ensure it's working: `python3 manage.py runserver`.
 14. Verify you see as follows when navigating to `http://127.0.0.1:8000/`.
 <img width="883" alt="hello world precursor to kubernetes deployment" src="https://user-images.githubusercontent.com/7783699/112783915-64d48500-901e-11eb-958e-3f62d0370f9b.png">
+15. Verify your project directory looks as follows:
+<img width="324" alt="project directory at start" src="https://user-images.githubusercontent.com/7783699/113534861-da50d000-959f-11eb-9c13-b9b5bc22bf0b.png">
+
 
 ## Switch to MariaDB instead of Sqlite3 (Optional)
 1. Install it: `brew install mariadb`. On Linux do (I think) `yum install python-pip python-dev mariadb-server libmariadbclient-dev libssl-dev`.
