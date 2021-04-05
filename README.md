@@ -175,6 +175,8 @@ footer > div {
 ```
 10. Run server again and verify you see as shown below:
 <img width="1583" alt="hello world after adding templates" src="https://user-images.githubusercontent.com/7783699/113534564-16376580-959f-11eb-8552-ba92e47465fd.png">
+<img width="438" alt="directory after adding templates" src="https://user-images.githubusercontent.com/7783699/113534660-5e568800-959f-11eb-9f87-17fff4bfe8e2.png">
+
 
 ## Wrap Project in Docker Container
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
