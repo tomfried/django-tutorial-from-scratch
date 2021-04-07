@@ -1,3 +1,16 @@
+**Table of Contents**
+- Setup Django Project
+- Switch to MariaDB instead of Sqlite3 (Optional)
+- Make Tweaks to File Structure
+  - Move static files to parent directory for all and rename "assets".
+  - Change "Hello World" to "Home" and make Controllers directory where all the backend code will live
+  - Create layout and add Header, Footer, and HTML Head as Partials/Templates
+- Create new Container/View (given current setup)
+- Create new Controller, View, AND Model (given current setup)
+
+
+
+
 ## Setup Django Project
 **Example is for `MAC` devices. Use `apt-get` or `yum` in place of `brew` commands for the equivalent on `Linux`.**
 1. Install Homebrew (used in place of `apt-get` and `yum` to install packages).
@@ -68,7 +81,7 @@ STATICFILES_DIRS = [
 ```
 5. Reload server and verify the home page despite being in a new directory still loads as if nothing has happened.
 
-### Change all Mention of "Hello World" to "Home" and make Controllers directory where all the backend code will live
+### Change "Hello World" to "Home" and make Controllers directory where all the backend code will live
 1. Change `/app/views/hello_world` folder to `/app/views/home`.
 2. Change `/app/hello_world` folder to `/app/controllers`.
 3. Change `/app/settings.py` reference in the `INSTALLED_APPS = [` section of `'hello_world',` to `'controllers',`.
@@ -180,6 +193,48 @@ footer > div {
 <img width="1583" alt="hello world after adding templates" src="https://user-images.githubusercontent.com/7783699/113534564-16376580-959f-11eb-8552-ba92e47465fd.png">
 <img width="438" alt="directory after adding templates" src="https://user-images.githubusercontent.com/7783699/113534660-5e568800-959f-11eb-9f87-17fff4bfe8e2.png">
 
+## Create new Container/View (given current setup)
+1. Duplicate the `/app/controllers/home/` directory then rename it ex. `admin`.
+2. Open up the now `/app/controllers/admin/view.py`and replace the line: `return render(request, 'home/index.html')` with `return render(request, 'admin/index.html')`. Just remember to indent properly. To do steps 1-2 manually instead, create new `admin` folder, create a `view.py` for it and a `__init__.py` in the folder too, just add `from .views import *` to the `/app/controllers/admin/__init__.py` file and then add the following to the `/app/controllers/admin/views.py`:
+```
+from django.shortcuts import render
+
+
+def index(request):
+    """Placeholder index view"""
+    return render(request, 'admin/index.html')
+
+```
+4. Duplicate the `/app/views/home/` directory then rename it to ex. `admin`. Then replace all of the `/app/controllers/admin/index.html` file with the following:
+```
+{% extends "../layout/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div id="adminPage" class="content-container">
+		<h1>Control Panel</h1>
+		<p>You made it!</p>
+	</div>
+{% endblock %}
+```
+5. In `/app/app/urls.py` file, change the core contents of it to instead the following. Commenting out of the box admin functionality for now and replacing with a landing page of our own.
+```
+# from django.contrib import admin
+from django.urls import path
+from controllers import home, admin
+
+
+urlpatterns = [
+    # path('admin/', admin.site.urls),
+    path('', home.index),
+    path('admin/', admin.index)
+]
+```
+6. Launch server and verify that going to `http://127.0.0.1:8000/admin` sends you to our page:
+<img width="1266" alt="admin page works" src="https://user-images.githubusercontent.com/7783699/113872289-c2d13d00-9781-11eb-9a51-0dab82a590a5.png">
+
+## Create new Controller, View, AND Model (given current setup)
+1. 
 
 ## Wrap Project in Docker Container
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
