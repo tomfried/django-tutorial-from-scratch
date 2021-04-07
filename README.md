@@ -1,6 +1,7 @@
 **Table of Contents**
 - Setup Django Project
 - Switch to MariaDB instead of Sqlite3 (Optional)
+- Create .gitignore file
 - Make Tweaks to File Structure
   - Move static files to parent directory for all and rename "assets".
   - Change "Hello World" to "Home" and make Controllers directory where all the backend code will live
@@ -52,6 +53,13 @@ If you did it the manaul way, make sure the version it right for your app. Check
 15. Now install mysqlclient to allow us to use the database just configured: `pip install django mysqlclient`.
 
 IF you run into issues, install these: `sudo apt-get install python-dev python3-dev`, `sudo apt-get install libmysqlclient-dev`, `pip install pymysql`, then `pip install mysqlclient` again. NOTE to use yum instead of apt-get if you use yum. As per MAC users, instead have to install XCode, `sudo xcodebuild -license accept`, then `brew install mysql-connector-c`.
+
+## Create .gitignore file
+In order to push to Git without all of the `env`, `sqlite3`, or `pycache` files, need to create a `.gitignore` file. If you git cloned from the earlier mentioned link, this was already pulled in, but if you made it from scratch instead, should add one.
+1. In outter project folder (NOT under `/app`) create a new file called `.gitignore`. Don't forget the period in front of the name.
+2. Edit this file and paste the some ~100 lines found here: https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/ in it and save.
+3. Verify you see the file in command line. Note you won't see it looking at it in a Finder or Files application because the `.` makes it hidden. Doing a `ls -a` via command line will reveal files beginning with `.`.
+![gitignore-found-in-command-line](https://user-images.githubusercontent.com/7783699/113875183-805d2f80-9784-11eb-977d-7b160fe5d627.png)
 
 ## Make Tweaks to File Structure
 ### Move static files to parent directory for all and rename "assets".
@@ -232,9 +240,11 @@ urlpatterns = [
 ```
 6. Launch server and verify that going to `http://127.0.0.1:8000/admin` sends you to our page:
 <img width="1266" alt="admin page works" src="https://user-images.githubusercontent.com/7783699/113872289-c2d13d00-9781-11eb-9a51-0dab82a590a5.png">
+<img width="636" alt="project directory after admin creation" src="https://user-images.githubusercontent.com/7783699/113873066-75a19b00-9782-11eb-8f22-1689bbb55e10.png">
 
 ## Create new Controller, View, AND Model (given current setup)
-1. 
+1.
+
 
 ## Wrap Project in Docker Container
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
