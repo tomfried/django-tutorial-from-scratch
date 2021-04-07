@@ -10,8 +10,6 @@
 - Create new Controller, View, AND Model (given current setup)
 
 
-
-
 ## Setup Django Project
 **Example is for `MAC` devices. Use `apt-get` or `yum` in place of `brew` commands for the equivalent on `Linux`.**
 1. Install Homebrew (used in place of `apt-get` and `yum` to install packages).
@@ -54,6 +52,30 @@ If you did it the manaul way, make sure the version it right for your app. Check
 
 IF you run into issues, install these: `sudo apt-get install python-dev python3-dev`, `sudo apt-get install libmysqlclient-dev`, `pip install pymysql`, then `pip install mysqlclient` again. NOTE to use yum instead of apt-get if you use yum. As per MAC users, instead have to install XCode, `sudo xcodebuild -license accept`, then `brew install mysql-connector-c`.
 
+16. (I think) Lastly in the `/app/app/setting.py` just need to switch:
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+```
+to (WITH PROPER EDITS TO NAME, USER, PASSWORD, HOST, and PORT).
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydatabase',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': 'mypassword',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+```
+Refer to [Django Docs - Databases[(https://docs.djangoproject.com/en/2.2/ref/settings/#databases) for assistance with this.
+
 ## Create .gitignore file
 In order to push to Git without all of the `env`, `sqlite3`, or `pycache` files, need to create a `.gitignore` file. If you git cloned from the earlier mentioned link, this was already pulled in, but if you made it from scratch instead, should add one.
 1. In outter project folder (NOT under `/app`) create a new file called `.gitignore`. Don't forget the period in front of the name.
@@ -87,7 +109,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'views'),
 ],
 ```
-5. Reload server and verify the home page despite being in a new directory still loads as if nothing has happened.
+5. Reload server and verify the home page despite being in a new directory still loads as if nothing has changed.
 
 ### Change "Hello World" to "Home" and make Controllers directory where all the backend code will live
 1. Change `/app/views/hello_world` folder to `/app/views/home`.
@@ -243,7 +265,10 @@ urlpatterns = [
 <img width="636" alt="project directory after admin creation" src="https://user-images.githubusercontent.com/7783699/113873066-75a19b00-9782-11eb-8f22-1689bbb55e10.png">
 
 ## Create new Controller, View, AND Model (given current setup)
-1.
+1. Create new folder under `/app/` called `models`
+2. Under `/app/models/` create new file called `__init__.py` and paste this in it: `from users import *`.
+3. Create new file under `/app/models/` called `users.py`. This will be our users model.
+4. 
 
 
 ## Wrap Project in Docker Container
