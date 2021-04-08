@@ -359,6 +359,8 @@ caption.sr-only {
     position: static;
 }
 ```
+11. Verify it all looks good. {{ADD ON TO THIS}}
+<img width="632" alt="project directory after model add" src="https://user-images.githubusercontent.com/7783699/113966157-93134b00-97fc-11eb-90ca-6d8dbeac4a9d.png">
 
 
 ## Wrap Project in Docker Container
