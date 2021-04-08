@@ -268,7 +268,97 @@ urlpatterns = [
 1. Create new folder under `/app/` called `models`
 2. Under `/app/models/` create new file called `__init__.py` and paste this in it: `from users import *`.
 3. Create new file under `/app/models/` called `users.py`. This will be our users model.
-4. 
+4. In `/app/app/settings.py` add the following: `AUTH_USER_MODEL = 'accounts.Users'` under your DATABASES block.
+5. In `/app/app/urls.py` replace what exists with the following:
+```
+# from django.contrib import admin
+from django.urls import path
+from controllers import home, admin, users
+
+
+urlpatterns = [
+    # path('admin/', admin.site.urls),
+    path('', home.index),
+    path('admin/', admin.index),
+    path('users/', users.index)
+]
+```
+6. Create folder called `users` under both `/app/views/` and `/app/controllers/`.
+7. Under the `/app/views/users/` directory, create a file called `index.html` that contains the following:
+```
+{% extends "../layout/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div id="userPage" class="content-container">
+        <h1>Users</h1>
+        <table>
+	    <caption class="sr-only">All Users</caption>
+	    <thead>
+	        <tr>
+		    <th>Username</th>
+		    <th>First Name</th>
+		    <th>Last Name</th>
+		    <th>Role</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+
+	    </tbody>
+        </table>
+    </div>
+{% endblock %}
+```
+8. Under the `/app/controllers/users/` directory, create a file called `views.py` that contains the following:
+```
+from django.shortcuts import render
+
+
+def index(request):
+    """Placeholder index view"""
+    return render(request, 'users/index.html')
+```
+9. Create a file under that same directory (`/app/controllers/users/`) and create a file called `__init__.py` that contains the following:
+```
+from .views import *
+```
+10. (Optional) In your CSS file at `/app/assets/css/styles.css` inject the following to the bottom of it:
+```
+table {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+table th {
+    background-color: #ddd;
+    vertical-align: middle;
+}
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: .5em;
+    text-align: center;
+}
+table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+.sr-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+caption.sr-only {
+    position: static;
+}
+```
 
 
 ## Wrap Project in Docker Container
