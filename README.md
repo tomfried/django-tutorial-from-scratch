@@ -360,7 +360,8 @@ caption.sr-only {
 }
 ```
 11. Verify it all looks good. {{ADD ON TO THIS}}
-<img width="632" alt="project directory after model add" src="https://user-images.githubusercontent.com/7783699/113966157-93134b00-97fc-11eb-90ca-6d8dbeac4a9d.png">
+<img width="632" alt="project directory after model add" src="https://user-images.githubusercontent.com/7783699/113966252-bfc76280-97fc-11eb-8205-46795272b2dd.png">
+
 
 
 ## Wrap Project in Docker Container
