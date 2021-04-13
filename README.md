@@ -4,10 +4,12 @@
 - Create .gitignore file
 - Make Tweaks to File Structure
   - Move static files to parent directory for all and rename "assets".
+  - Move all views (HTML files) to own folder in parent directory
   - Change "Hello World" to "Home" and make Controllers directory where all the backend code will live
   - Create layout and add Header, Footer, and HTML Head as Partials/Templates
 - Create new Container/View (given current setup)
 - Create new Controller, View, AND Model (given current setup)
+- Wrap Project in Docker Container
 
 
 ## Setup Django Project
@@ -52,7 +54,10 @@ If you did it the manaul way, make sure the version it right for your app. Check
 
 IF you run into issues, install these: `sudo apt-get install python-dev python3-dev`, `sudo apt-get install libmysqlclient-dev`, `pip install pymysql`, then `pip install mysqlclient` again. NOTE to use yum instead of apt-get if you use yum. As per MAC users, instead have to install XCode, `sudo xcodebuild -license accept`, then `brew install mysql-connector-c`.
 
-16. (I think) Lastly in the `/app/app/setting.py` just need to switch:
+16. Enter mysql by typing `mysql`, create a new database called ex. `mydatabase` (`CREATE DATABASE myproject CHARACTER SET UTF8;`), create a new user called ex. `mydatabaseuser` (`CREATE USER mydatabaseuser@localhost IDENTIFIED BY 'password';`).
+17. Next grant said `mydatabaseuser` full permission to the `mydatabase`: `GRANT ALL PRIVILEGES ON mydatabase.* TO mydatabaseuser@localhost;`.
+18. Update the permissions: `FLUSH PRIVILEGES;` then exit mysql: `exit`;
+19. Lastly in the `/app/app/setting.py` just need to switch: 
 ```
 DATABASES = {
     'default': {
@@ -68,9 +73,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydatabase',
         'USER': 'mydatabaseuser',
-        'PASSWORD': 'mypassword',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        #'PASSWORD': '',
+        #'HOST': '',
+        #'PORT': '',
     }
 }
 ```
@@ -368,10 +373,10 @@ caption.sr-only {
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
 2. Next open your code editor (Atom, VSCode, etc.) and open new workspace for that project folder (ex. "demo-django-hello-world-starter").
 3. Create a new file called `Dockerfile`.
-4. 
+4. TODO
 
 
 
 ## Deploy Container to Kubernetes (Purely command-line)
-1.
+1.TODO
 
