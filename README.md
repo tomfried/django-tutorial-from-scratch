@@ -368,31 +368,6 @@ caption.sr-only {
 11. Verify it all looks good. {{ADD ON TO THIS}}
 <img width="632" alt="project directory after model add" src="https://user-images.githubusercontent.com/7783699/113966252-bfc76280-97fc-11eb-8205-46795272b2dd.png">
 
-
-## Add SCSS/SASS to Project
-1. With the environment activated (`source env/bin/activate`), install django-sass: `pip install django-sass`.
-2. Add to list of installed apps in your `/app/app/settings.py` file.
-```
-INSTALLED_APPS = [
-    ...,
-    'django_sass',
-]
-```
-3. Any file with a `.scss` ending will now work.
-4. To compress all SCSS files into a single `.css` file, do the following. Create a new filed called `application.py` or `main.py` and put it under ... idk somewhere and add the following to it:
-```
-from django_sass import compile_sass
-
-# Compile scss and write to output file.
-compile_sass(
-    inpath="/path/to/file.scss",
-    outpath="/path/to/output.css",
-    output_style="compressed",
-    precision=8,
-    source_map=True
-)
-```
-
 ## Wrap Project in Docker Container
 1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
 2. Next open your code editor (Atom, VSCode, etc.) and open new workspace for that project folder (ex. "demo-django-hello-world-starter").
