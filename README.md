@@ -368,14 +368,3 @@ caption.sr-only {
 11. Verify it all looks good. {{ADD ON TO THIS}}
 <img width="632" alt="project directory after model add" src="https://user-images.githubusercontent.com/7783699/113966252-bfc76280-97fc-11eb-8205-46795272b2dd.png">
 
-## Wrap Project in Docker Container
-1. Install Docker. Couple ways to do this, but I downloaded https://www.docker.com/products/docker-desktop which includes it.
-2. Next open your code editor (Atom, VSCode, etc.) and open new workspace for that project folder (ex. "demo-django-hello-world-starter").
-3. Create a new file called `Dockerfile`.
-4. TODO
-
-
-
-## Deploy Container to Kubernetes (Purely command-line)
-1.TODO
-
