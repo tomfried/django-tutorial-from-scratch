@@ -1,6 +1,7 @@
 # Django Tutorial From Scratch
 What follows is my recommended guide for getting folks familar with and building a Django-Python application from scratch. There is no better way to learn than by being hands on and this will check your progress along the way with screenshots of what you should be seeing both in your app and in your file structure.
 
+-------
 **Table of Contents**
 - Setup Django Project
 - Switch to MariaDB instead of Sqlite3 (Optional)
